@@ -54,6 +54,8 @@ input{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 .movie{
     width: 240px;
@@ -74,22 +76,30 @@ svg{
     /* position: relative; */
 }
 .movie__info{
+    max-width: 240px;
     display: flex;
     justify-content: space-between;
 }
+.movie__text{
+
+}
 .movie__title{
+
     color: #fff;
     font-size: 18px;
 
 }
 .movie__genre{
+
     color: #fff;
     font-weight: 200;
     font-size: 14px;
     opacity: 0.7;
 
 }
+
 .movie__year{
+
     color: #fff;
     font-weight: 200;
     font-size: 14px;
@@ -103,6 +113,7 @@ svg{
 
 }
 .movie__rating{
+    
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -111,4 +122,31 @@ svg{
 .rating{
     text-align: center;
     padding: 5px;
+}
+.category{
+    width: 240px;
+    height: 36px;
+    background-color: #000;
+    padding-top: 7px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.category:hover{
+    -webkit-box-shadow: 0px 2px 16px 10px rgba(164, 172, 178, 0.2);
+    -moz-box-shadow: 0px 2px 16px 10px rgba(164, 172, 178, 0.2);
+    box-shadow: 0px 2px 16px 10px rgba(164, 172, 178, 0.2);
+}
+.category:active{
+    transform:translateY(5px);
+}
+
+.category-text{
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+}
+.category-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
