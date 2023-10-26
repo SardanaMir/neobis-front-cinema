@@ -1,78 +1,97 @@
-//премьеры месяца
-const API_URL_PREMIERES = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=2023&month=OCTOBER';
-//цифровые релизы
-const API_URL_RELEASES = 'https://kinopoiskapiunofficial.tech/api/v2.1/films/releases?year=2023&month=OCTOBER&page=1';
-//top фильмов
-const API_URL_TOP = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_MOVIES&page=1';
-// ожидамые релизы
-const API_URL_CLOSE_RELEASES = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=CLOSES_RELEASES&page=1';
-
-async function getMovies(url){
-    const resp = await fetch(url, {
-        method: 'GET',
-        headers: {
-            'X-API-KEY': APIKEY,
-            'Content-Type': 'application/json',
-        },
-    })
-    const respData = await resp.json()
-    console.log(respData);
-    showMovies(respData)
-}
-
-const premieres = document.getElementById('premieres');
-premieres.addEventListener('click', ()=>{
+document.addEventListener("DOMContentLoaded", () => {
+    async function getMovies(url){
+        const resp = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'X-API-KEY': APIKEY,
+                'Content-Type': 'application/json',
+            },
+        })
+        const respData = await resp.json()
+        console.log(respData);
+        showMovies(respData)
+    }
+    
+    //при выборе категории
+    const URL = [API_URL_PREMIERES, API_URL_CLOSE_RELEASES, API_URL_RELEASES, API_URL_TOP]
+    const category = document.querySelectorAll('.category')
+    for (let i = 0; i < category.length; i++){
+        category[i].addEventListener('click', ()=>{
+            for (let i = 0; i < category.length; i++){
+                category[i].classList.remove('chose');
+            }
+            getMovies(URL[i]);
+            category[i].classList.add('chose');
+        })
+    }
+    
+    //стартовая страница
     getMovies(API_URL_PREMIERES);
-})
+    category[0].classList.add('chose')
+    
+    //найти фильм
+    function findMovie(){
+        const search = document.querySelector('.header__search').value;
+    }
+    
+    function showMovies(data){
+        moviesBlock = document.querySelector('.movies-container');
+        moviesBlock.innerHTML = '';
+        if (data.releases){
+            data.items = data.releases
+            delete data.releases
+            console.log(data)
+        }
+        console.log(data.items.rating)
+        data.items.forEach(item =>{
+            const movie = document.createElement('div');
+            movie.classList.add('movie');
+            movie.innerHTML = `
+                <div class="movie__poster">
 
-const topClose = document.getElementById('top-close');
-topClose.addEventListener('click', ()=>{
-    getMovies(API_URL_CLOSE_RELEASES);
-})
-const release = document.getElementById('release');
-release.addEventListener('click', ()=>{
-    getMovies(API_URL_RELEASES);
-})
-const bestFilms  = document.getElementById('best-films');
-bestFilms.addEventListener('click', ()=>{
-    getMovies(API_URL_TOP);
-})
-// getMovies(API_URL_PREMIERES);
-// getMovies(API_URL_RELEASES);
-// getMovies(API_URL_TOP);
-// getMovies(API_URL_CLOSE_RELEASES);
-
-function showMovies(data){
-    moviesBlock = document.querySelector('.movies-container');
-
-    data.items.forEach(item =>{
-        const movie = document.createElement('div');
-        movie.classList.add('movie');
-        movie.innerHTML = `
-            <div class="movie__poster">
-                <div class="movie__heart">
-                    <img class="heart" src="img/heart.svg" alt="">
+                    <img class="movie__poster-img" src="${item.posterUrl}" alt="">
                 </div>
-                <img class="movie__poster-img" src="${item.posterUrl}" alt="">
-            </div>
-            <div class="movie__info">
-                <div class="movie__text">
-                    <div class="movie__title">${item.nameRu}</div>
-                    <div class="movie__genre">${item.genres.map(item=>item.genre)}</div>
-                    <div class="movie__year">${item.year}</div>
-                </div>
-                <div class="movie__rating"><p class="rating">${Math.floor(item.rating*10)/10}</p></div>
-            </div>
-        `;
-        moviesBlock.appendChild(movie)
-    })
-}
+                <div class="movie__info">
+                    <div class="movie__text">
+                        <div class="movie__title">${item.nameRu}</div>
+                        <div class="movie__genre">${item.genres.map(item=>item.genre)}</div>
+                        <div class="movie__year">${item.year}</div>
+                    </div>
+                    <div class="movie__panel">
+                        <div class="movie__rating"><p class="rating">${checkRating(item.ratingKinopoisk)}</p></div>
+                        <div class="movie__heart heart">
+                        </div>
+                    </div>
 
-//поставить лайк
-let hearts = document.querySelectorAll('.heart');
-for (let i = 0; i < hearts.length; i++){
-    hearts[i].ondblclick  = like(hearts[i]);
-}
-function like(heart){
-   heart.src = 'img/heart-red.svg';
-}
+                </div>
+            `;
+            moviesBlock.appendChild(movie)
+        })
+    
+        like();
+    }
+    
+    //проверка рейтинга
+    function checkRating(rating){
+        if (rating === null || !rating){
+            return '-'
+            return document.querySelector('.movie__rating').remove()
+        }else{
+            return Math.floor(rating*10)/10
+        }
+    }
+    //поставить лайк
+    
+    function like(){
+        let hearts = document.querySelectorAll('.heart');
+        console.log(hearts)
+        for (let i = 0; i < hearts.length; i++){
+            hearts[i].addEventListener('click', ()=>{
+                hearts[i].classList.toggle('liked')
+            });
+        }
+    }
+    
+})
+
+

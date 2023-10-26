@@ -9,6 +9,7 @@ body{
 }
 a{
     text-decoration: none;
+    color: #fff;
 }
 .container{
     max-width: 1032px;
@@ -50,12 +51,16 @@ input{
 /* img{
     width: 240px;   
 } */
+.movies{
+    margin-top: 20px;
+}
 .movies-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    align-items: stretch;
 }
 .movie{
     width: 240px;
@@ -64,30 +69,31 @@ input{
 }
 .movie__heart{
     height: 30px;
-    position: absolute;
-    transform: translate3d(200px, 10px, 0px);
-
+    /* position: absolute;
+    transform: translate3d(200px, 10px, 0px); */
 }
 svg{
     width: 25px;
 }
 .movie__poster-img{
     width: 240px;
+    height: 360px;
     /* position: relative; */
+    cursor: pointer;
+}
+.movie__poster-img:hover{
+    opacity: 0.6;
 }
 .movie__info{
     max-width: 240px;
     display: flex;
     justify-content: space-between;
 }
-.movie__text{
-
-}
 .movie__title{
 
     color: #fff;
     font-size: 18px;
-
+    cursor: pointer;
 }
 .movie__genre{
 
@@ -119,9 +125,16 @@ svg{
     border-radius: 50%;
     background-color: #757575;
 }
+.movie__text{
+    width: 150px;
+}
+.movie__genre{
+    max-width: 150px;
+}
 .rating{
     text-align: center;
     padding: 5px;
+    color: #fff;
 }
 .category{
     width: 240px;
@@ -131,7 +144,7 @@ svg{
     cursor: pointer;
     transition: all 0.3s;
 }
-.category:hover{
+.chose, .category:hover{
     -webkit-box-shadow: 0px 2px 16px 10px rgba(164, 172, 178, 0.2);
     -moz-box-shadow: 0px 2px 16px 10px rgba(164, 172, 178, 0.2);
     box-shadow: 0px 2px 16px 10px rgba(164, 172, 178, 0.2);
@@ -147,6 +160,65 @@ svg{
 }
 .category-wrapper{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 20px
+}
+.movie__panel{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.heart {
+    width: 15px; 
+    height: 15px; 
+    background-color: #fff; 
+    transform: rotate(45deg);
+    position: relative; 
+    transition: all 0.3s;
+}
+.heart::before,
+.heart::after {
+    content : ''; 
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    border-radius: 50%; 
+    position: absolute;
+}
+.heart::before {
+    top: -9px;
+    left: 0;
+}
+.heart::after {
+    top: 0;
+    left: -9px;
+}
+
+.liked {
+    width: 15px; 
+    height: 15px; 
+    background-color: red; 
+    transform: rotate(45deg);
+    position: relative; 
+}
+.liked::before,
+.liked::after {
+    content : ''; 
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%; 
+    position: absolute;
+}
+.liked::before {
+    top: -9px;
+    left: 0;
+}
+.liked::after {
+    top: 0;
+    left: -9px;
 }
