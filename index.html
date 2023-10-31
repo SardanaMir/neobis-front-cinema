@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie App</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <header class="header">
         <div class="container">
             <div class="header__wrapper">
                 <div class="header-content">
                     <a href="index.html" class="header__logo">MovieApp</a>
                 </div>
-                <div class="favorite category-text"><a href="">Избранные</a></div>
                 <form class="form">
                     <input type="text" class="header__search" placeholder="Поиск">
                     <label class="search__icon">
@@ -30,35 +31,17 @@
     <section class="category-section">
         <div class="container">
             <div class="category-wrapper">
-                <label class="category" id="premieres"><p class="category-text">Премьеры этого месяца</p></label>
-                <label class="category" id="top-close"><p class="category-text">Топ ожидаемых фильмов</p></label>
-                <label class="category" id="release"><p class="category-text">Цифровые релизы этого месяца</p></label>
-                <label class="category" id="best-films"><p class="category-text">Топ лучших фильмов</p></label>
+                <label class="category"><p class="category-text">Премьеры этого месяца</p></label>
+                <label class="category"><p class="category-text">Топ ожидаемых фильмов</p></label>
+                <label class="category"><p class="category-text">Цифровые релизы этого месяца</p></label>
+                <label class="category" ><p class="category-text">Топ лучших фильмов</p></label>
+                <label class="category favorite"><p class="category-text">Твои избранные фильмы</p></label>
             </div>
         </div>
     </section>
-
     <div class="movies">
-        <div class="movies-container container">
-            <!-- <div class="movie">
-                <div class="movie__poster">
-                    <div class="movie__heart">
-                        <img class="heart" src="img/heart.svg" alt="">
-                    </div>
-                    <img class="movie__poster-img" src="img/134825.jpg" alt="">
-                </div>
-                <div class="movie__info">
-                    <div class="movie__text">
-                        <div class="movie__title">Шерлок Холмс</div>
-                        <div class="movie__genre">Детектив, Боевик</div>
-                        <div class="movie__year">2007</div>
-                    </div>
-                    <div class="movie__rating"><p class="rating">9.5</p></div>
-                </div>
-            </div> -->
-        </div>
+        <div class="movies-container container"></div>
     </div>
-
     <script src="js/config.js"></script>
     <script src="js/script.js"></script>
 </body>

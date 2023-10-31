@@ -49,9 +49,6 @@ input{
     cursor: pointer;
 }
 
-/* img{
-    width: 240px;   
-} */
 .movies{
     margin-top: 20px;
 }
@@ -70,8 +67,6 @@ input{
 }
 .movie__heart{
     height: 30px;
-    /* position: absolute;
-    transform: translate3d(200px, 10px, 0px); */
 }
 svg{
     width: 25px;
@@ -79,7 +74,6 @@ svg{
 .movie__poster-img{
     width: 240px;
     height: 360px;
-    /* position: relative; */
     cursor: pointer;
 }
 .movie__poster-img:hover{
@@ -91,22 +85,11 @@ svg{
     justify-content: space-between;
 }
 .movie__title{
-
     color: #fff;
     font-size: 18px;
     cursor: pointer;
 }
-.movie__genre{
-
-    color: #fff;
-    font-weight: 200;
-    font-size: 14px;
-    opacity: 0.7;
-
-}
-
-.movie__year{
-
+.movie__genre, .movie__year{
     color: #fff;
     font-weight: 200;
     font-size: 14px;
@@ -117,19 +100,14 @@ svg{
     flex-direction: column;
     align-items: center;
     gap: 5px;
-
 }
 .movie__rating{
-    
     width: 35px;
     height: 35px;
     border-radius: 50%;
     background-color: #757575;
 }
-.movie__text{
-    width: 150px;
-}
-.movie__genre{
+.movie__text, .movie__genre{
     max-width: 150px;
 }
 .rating{
@@ -138,12 +116,12 @@ svg{
     color: #fff;
 }
 .category{
-    width: 240px;
-    height: 36px;
+    width: 180px;
+    min-height: 36px;
     background-color: #000;
-    padding-top: 7px;
     cursor: pointer;
     transition: all 0.3s;
+    padding: 10px;
 }
 .chose, .category:hover{
     -webkit-box-shadow: 0px 2px 16px 10px rgba(164, 172, 178, 0.2);
@@ -153,7 +131,6 @@ svg{
 .category:active{
     transform:translateY(5px);
 }
-
 .category-text{
     color: #FFF;
     text-align: center;
@@ -178,6 +155,7 @@ svg{
     transform: rotate(45deg);
     position: relative; 
     transition: all 0.3s;
+    cursor: pointer;
 }
 .heart::before,
 .heart::after {
@@ -197,33 +175,14 @@ svg{
     top: 0;
     left: -9px;
 }
-
 .liked {
-    width: 15px; 
-    height: 15px; 
     background-color: red; 
-    transform: rotate(45deg);
-    position: relative; 
 }
 .liked::before,
 .liked::after {
     content : ''; 
-    display: block;
-    width: 15px;
-    height: 15px;
     background-color: red;
-    border-radius: 50%; 
-    position: absolute;
 }
-.liked::before {
-    top: -9px;
-    left: 0;
-}
-.liked::after {
-    top: 0;
-    left: -9px;
-}
-
 @media only screen and (max-width: 426px){
     .header__logo {
         font-size: 23px;
