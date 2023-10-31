@@ -1,3 +1,4 @@
+# MovieApp. The films platform.
 Hey there! Let me present a project. This is the films platform where you find information about films.<br></br>
 ![2023-10-31_16-06-33](https://github.com/SardanaMir/neobis-front-cinema/assets/134269662/5a29be8d-ba7b-46ea-ae33-70fe2b72655d)
 
